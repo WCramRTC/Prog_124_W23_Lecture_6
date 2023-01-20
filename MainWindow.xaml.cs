@@ -33,7 +33,6 @@ namespace Prog_124_W23_Lecture_6
 
             lblYear.Content = year.ToString();
 
-            new Banking_App().Show();
 
         }
 
