@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Prog_124_W23_Lecture_6.Examples.Inheirtance_Display
 {
@@ -20,7 +21,7 @@ namespace Prog_124_W23_Lecture_6.Examples.Inheirtance_Display
 
         public override string ToString()
         {
-            return $"{Name}{count}";
+            return $"{GetType().Name} - {count}";
         }
     }
 }

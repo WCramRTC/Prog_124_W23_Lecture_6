@@ -22,6 +22,8 @@ namespace Prog_124_W23_Lecture_6.Examples.BankingApp
     {
         int year = 2000;
 
+        ObservableCollection<Account> accounts = new ObservableCollection<Account>();
+
         public Banking_App()
         {
             InitializeComponent();
@@ -29,23 +31,10 @@ namespace Prog_124_W23_Lecture_6.Examples.BankingApp
             ShowSavings();
 
             lblYear.Content = year.ToString();
+
+            lbAccounts.ItemsSource = accounts;
         }
 
-        
-
-        private void SwitchPanels(object sender, RoutedEventArgs e)
-        {
-            HideCanvas();
-
-            if(rbSavings.IsChecked.Value)
-            {
-                ShowSavings();
-            }
-            else
-            {
-                ShowChecking();
-            }
-        }
 
         private void btnCreateAccount_Click(object sender, RoutedEventArgs e)
         {
@@ -53,6 +42,8 @@ namespace Prog_124_W23_Lecture_6.Examples.BankingApp
             string lName = txtLName.Text;
             decimal amount = ValidateMoney(txtBalance.Text);
 
+            accounts.Add(new Account(fName, lName, amount));
+            MessageBox.Show("This works");
 
         }
 
@@ -99,6 +90,21 @@ namespace Prog_124_W23_Lecture_6.Examples.BankingApp
         public void ShowSavings()
         {
             canSavings.Visibility = Visibility.Visible;
+        }
+
+
+        private void SwitchPanels(object sender, RoutedEventArgs e)
+        {
+            HideCanvas();
+
+            if (rbSavings.IsChecked.Value)
+            {
+                ShowSavings();
+            }
+            else
+            {
+                ShowChecking();
+            }
         }
     }
 }
