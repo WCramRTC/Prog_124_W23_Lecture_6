@@ -77,7 +77,7 @@ namespace Prog_124_W23_Lecture_6
                 Account account = accounts[index];
 
                 account.Withdraw(amount);
-                MessageBox.Show(account.Balance.ToString());
+                lbAccounts.Items.Refresh();
             }
 
 
