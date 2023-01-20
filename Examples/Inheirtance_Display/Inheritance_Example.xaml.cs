@@ -34,6 +34,8 @@ namespace Prog_124_W23_Lecture_6.Examples.Inheirtance_Display
             InitializeComponent();
             ConnectCollections();
             UpdateCount();
+
+
         }
 
         public void ConnectCollections()

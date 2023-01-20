@@ -30,15 +30,13 @@
             <RadioButton x:Name="rbChecking" Content="Checking" Canvas.Left="24" Canvas.Top="217" HorizontalAlignment="Left" VerticalAlignment="Top" Checked="SwitchPanels"/>
         </Canvas>
 
-        <Canvas x:Name="canChecking" Background="#FFFFDDDD" Margin="0,257,0,0" Grid.RowSpan="2" Visibility="Hidden">
+        <Canvas x:Name="canChecking" Background="#FFFFDDDD" Margin="0,257,0,0" Grid.RowSpan="2" Visibility="Visible">
             <Label Content="Checking" Canvas.Left="72" Canvas.Top="4" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <Label Content="Overdraft Fee" Canvas.Left="10" Canvas.Top="35"/>
-            <TextBox Canvas.Left="136" TextWrapping="Wrap" Canvas.Top="39" Width="48" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Label Content="Overdraft Threshold" Canvas.Left="10" Canvas.Top="80" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <TextBox Canvas.Left="136" TextWrapping="Wrap" Canvas.Top="84" Width="48" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtODFee" Canvas.Left="136" TextWrapping="Wrap" Canvas.Top="39" Width="48" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Canvas>
         <Button x:Name="btnCreateAccount" Content="Create Account" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="38" Width="203" Click="btnCreateAccount_Click"/>
-        <Canvas  x:Name="canSavings" Background="#FFFFDDDD" Margin="0,257,0,0" Grid.RowSpan="2" >
+        <Canvas  x:Name="canSavings" Background="#FFFFDDDD" Margin="0,257,0,0" Grid.RowSpan="2" Visibility="Hidden" >
             <TextBox x:Name="txtInterestRate" Canvas.Left="17" TextWrapping="Wrap" Canvas.Top="45" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Label Content="Interest Rate" Canvas.Left="17" Canvas.Top="14" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Canvas>
@@ -50,6 +48,7 @@
             <TextBox x:Name="txtAmount" Canvas.Left="24" TextWrapping="Wrap" Canvas.Top="136" Width="177" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Label x:Name="lblYear" Content="Label" Canvas.Left="90" Canvas.Top="19"/>
             <Button x:Name="btnPachinko" Content="P" Canvas.Left="177" Canvas.Top="378" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Click="btnPachinko_Click"/>
+            <Button x:Name="btnBA" Content="BA" Canvas.Left="148" Canvas.Top="378" Width="24" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Canvas>
 
     </Grid>

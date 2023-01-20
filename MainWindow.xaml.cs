@@ -2,6 +2,7 @@
 using Prog_124_W23_Lecture_6.Examples.Inheirtance_Display;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,8 @@ namespace Prog_124_W23_Lecture_6
     {
 
         int year = 2000;
+        // Observable Collection <T>
+        ObservableCollection<Account> accounts = new ObservableCollection<Account>();
 
         public MainWindow()
         {
@@ -33,30 +36,28 @@ namespace Prog_124_W23_Lecture_6
 
             lblYear.Content = year.ToString();
 
+            // listBoxName.ItemsSource = collectionName
+            lbAccounts.ItemsSource = accounts;
 
         }
 
-        private void SwitchPanels(object sender, RoutedEventArgs e)
-        {
-            HideCanvas();
-
-            if (rbSavings.IsChecked.Value)
-            {
-                ShowSavings();
-            }
-            else
-            {
-                ShowChecking();
-            }
-        }
-
+        // Event to add a new Account
         private void btnCreateAccount_Click(object sender, RoutedEventArgs e)
         {
             string fName = txtFName.Text;
             string lName = txtLName.Text;
             decimal amount = ValidateMoney(txtBalance.Text);
+            CheckingAccount account = null;
 
+            if (rbChecking.IsChecked.Value)
+            {
+                decimal overDraft = ValidateMoney(txtODFee.Text);
+                account = new CheckingAccount(fName, lName, amount , overDraft);
+            }
 
+            
+
+            accounts.Add(account);
         }
 
         private void btnDeposit_Click(object sender, RoutedEventArgs e)
@@ -68,6 +69,17 @@ namespace Prog_124_W23_Lecture_6
         private void btnWithdraw_Click(object sender, RoutedEventArgs e)
         {
             decimal amount = ValidateMoney(txtAmount.Text);
+
+            // Validates if an account is selected
+            if(lbAccounts.SelectedIndex != -1)
+            {
+                int index = lbAccounts.SelectedIndex;
+                Account account = accounts[index];
+
+                account.Withdraw(amount);
+                MessageBox.Show(account.Balance.ToString());
+            }
+
 
         }
 
@@ -109,5 +121,21 @@ namespace Prog_124_W23_Lecture_6
         {
             new Inheritance_Example().Show();
         }
+
+
+        private void SwitchPanels(object sender, RoutedEventArgs e)
+        {
+            HideCanvas();
+
+            if (rbSavings.IsChecked.Value)
+            {
+                ShowSavings();
+            }
+            else
+            {
+                ShowChecking();
+            }
+        }
+
     }
 }
